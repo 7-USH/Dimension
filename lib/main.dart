@@ -1,9 +1,15 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:measurely/pages/home_page.dart';
 
-void main() {
+List<CameraDescription> cameras = [];
+
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  cameras = await availableCameras();
   runApp(const MyApp());
 }
 
@@ -16,7 +22,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Measurely',
       debugShowCheckedModeBanner: false,
-      home: const HomePage(),
+      home: HomePage(
+        cameras:cameras
+      ),
     );
   }
 }
