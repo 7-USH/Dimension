@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:measurely/common/cutout.dart';
 import 'package:measurely/constants/constants.dart';
+import 'package:measurely/pages/level_page.dart';
 import 'package:measurely/widgets/action_button.dart';
 
 class HomePage extends StatefulWidget {
@@ -18,6 +19,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   late CameraController cameraController;
+  
 
   @override
   void initState() {
@@ -37,11 +39,11 @@ class _HomePageState extends State<HomePage> {
       _selectedIndex = index;
     });
   }
-
+  
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    List<Widget> pages = [measurePage(size), levelPage()];
+    List<Widget> pages = [measurePage(size), LevelPage()];
     return Scaffold(
         backgroundColor: Colors.transparent,
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
@@ -59,7 +61,7 @@ class _HomePageState extends State<HomePage> {
                       )),
                 ),
               )
-            : Container(),
+            : SizedBox(),
         bottomNavigationBar: Container(
           height: size.height * 0.1,
           width: size.width,
@@ -76,9 +78,15 @@ class _HomePageState extends State<HomePage> {
                 onTap: onIndexSelect,
                 items: const [
                   BottomNavigationBarItem(
-                      icon: Icon(FontAwesomeIcons.ruler), label: "Measure"),
+                      icon: Padding(
+                        padding: EdgeInsets.only(bottom: 8),
+                        child: Icon(FontAwesomeIcons.ruler),
+                      ), label: "Measure"),
                   BottomNavigationBarItem(
-                      icon: Icon(Icons.linear_scale_outlined), label: "level"),
+                      icon: Padding(
+                        padding: EdgeInsets.only(bottom: 8),
+                        child: Icon(Icons.linear_scale_outlined),
+                      ), label: "level"),
                 ]),
           ),
         ),
@@ -138,7 +146,4 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget levelPage() {
-    return Container();
-  }
 }
