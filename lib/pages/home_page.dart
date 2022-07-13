@@ -86,7 +86,7 @@ class _HomePageState extends State<HomePage> {
                       icon: Padding(
                         padding: EdgeInsets.only(bottom: 8),
                         child: Icon(Icons.linear_scale_outlined),
-                      ), label: "level"),
+                      ), label: "Level"),
                 ]),
           ),
         ),
@@ -128,7 +128,7 @@ class _HomePageState extends State<HomePage> {
           child: Align(
             alignment: Alignment.topLeft,
             child: ActionButton(
-              iconData: Icons.keyboard_arrow_left,
+              iconData: Icons.u_turn_left_rounded,
             ),
           ),
         ),
